@@ -65,6 +65,14 @@ The environment is considered solved, when the average (over 100 episodes) of th
 
 ### Instructions
 
+Dependencies:
+
+To install the libraries used on this environment there is a requirements.txt file on the root folder where you can use the command pip install -r requirements.txt
+
+For those that uses conda there is a .yml file that you can run using the following command in order to create the proper environment:
+conda env create -f drlnd.yml
+
+
 Follow the instructions in `Continuous_Control.ipynb` to get started with training your own agent!  
 
 ### (Optional) Challenge: Crawler Environment

@@ -1,11 +1,9 @@
-# Project 1: Navigation
+# Project 2: Control Navigation
 ### Author: Angelo Antonio Manzatto 
 ------------------------------
 ### Introduction
 
-For this project, you will train an agent to navigate (and collect bananas!) in a large, square world.  
-
-A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana.  Thus, the goal of your agent is to collect as many yellow bananas as possible while avoiding blue bananas.  
+In this environment, a double-jointed arm can move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of the agent is to maintain its position at the target location for as many time steps as possible.
 
 ### Space State
 ------------------------------------------------------
@@ -24,6 +22,20 @@ The task is episodic, and in order to solve the environment, your agent must get
 ### Algorithm 
 ------------------------------------------------------
 This project uses a **Deep Deterministic Policy Gradients (DDPG) ** algorithm to train an agent' arm on reaching the target destination.
+
+DDPG is an algorithm which concurrently learns q Q-funciona and a policy. It uses two models, one called Actor and the other called critic that directly maps states to actions intead of outputting the probability distribution across a discrete action space. 
+
+Also it has two target networks that are time-delayed copies of their original networks that slowly track the learned networks in order to improve stability while learning.
+
+The steps that the algorithm performs can be seeing as below:
+
+![Plot](/images/ddpg-algorithm.png)
+
+Also we use s replay buffer to sample past experiences for learning to remove the strong correlation between sequence of action that results in a deterministic state helping to learng how to act in different situations that are not frequent.
+
+The parameter from the target network are updated using a process called "soft update" that uses part of the learned network in order to slowly update its own weights.
+
+Since we are learning a continuous space instead of a discrete one the exploration is done by adding noise to the action itself using a method called Ornsterin-Uhlenbeck Process.
 
 ### Model 
 ------------------------------------------------------
